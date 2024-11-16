@@ -66,7 +66,7 @@ OBJS_DIR	= objects/
 OBJS		= $(addprefix ${OBJS_DIR}, ${SRC:.c=.o})
 
 CC			= cc
-INCLUDES	= -I ../includes
+INCLUDES	= -I includes
 NAME		= libft.a
 RM			= rm -f
 CFLAGS		= -Wall -Wextra -Werror ${INCLUDES}
