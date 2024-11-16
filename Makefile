@@ -1,4 +1,6 @@
-SRC			= ft_isalpha.c \
+LIB_DIR		= libft/
+
+LIB_FILE	= ft_isalpha.c \
 			  ft_isdigit.c \
 			  ft_isalnum.c \
 			  ft_isascii.c \
@@ -40,7 +42,22 @@ SRC			= ft_isalpha.c \
 			  ft_toupper.c \
 			  ft_tolower.c \
 			  ft_itoa.c \
-			  ft_atoi.c
+			  ft_atoi.c \
+			  ft_strchar.c
+
+
+PF_DIR		= ft_printf/
+
+PF_FILE		= ft_printf.c \
+			  ft_printf_utils.c \
+			  ft_printf_put.c \
+			  ft_itoa_base.c \
+			  ft_putnbrstr.c \
+			  ft_putnbr_hex.c
+
+
+SRC			+= $(addprefix ${PF_DIR}, ${PF_FILE})
+SRC			+= $(addprefix ${LIB_DIR}, ${LIB_FILE})
 
 SRCS_DIR 	= srcs/
 SRCS		= $(addprefix ${SRCS_DIR}, ${SRC})
@@ -48,10 +65,11 @@ SRCS		= $(addprefix ${SRCS_DIR}, ${SRC})
 OBJS_DIR	= objects/
 OBJS		= $(addprefix ${OBJS_DIR}, ${SRC:.c=.o})
 
-INCLUDES	= includes
+CC			= cc
+INCLUDES	= -I ../includes
 NAME		= libft.a
 RM			= rm -f
-CFLAGS		= -Wall -Wextra -Werror -I ${INCLUDES}
+CFLAGS		= -Wall -Wextra -Werror ${INCLUDES}
 
 #Colors
 GRAY		= \033[0;90m
@@ -67,7 +85,7 @@ RESET		= \033[0m
 all:			${NAME}
 
 ${OBJS_DIR}%.o: ${SRCS_DIR}%.c | ${OBJS_DIR}
-				@cc ${CFLAGS} -c $< -o $@
+				@${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:		${OBJS}
 				@ar rcs $@ -o $^
@@ -75,11 +93,15 @@ ${NAME}:		${OBJS}
 
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
+				@mkdir -p ${OBJS_DIR}${LIB_DIR}
+				@mkdir -p ${OBJS_DIR}${PF_DIR}
 
 bonus:			${NAME}
 
 clean:
 				@${RM} ${OBJS}
+				@${RM} -r ${LIB_DIR}
+				@${RM} -r ${PF_DIR}
 				@${RM} -r ${OBJS_DIR}
 				@echo "${RED}'${NAME}' objects are deleted !${RESET}"
 

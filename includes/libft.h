@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benpicar <benpicar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:32:43 by benpicar          #+#    #+#             */
-/*   Updated: 2024/10/26 16:59:04 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/12 14:49:57 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-//# include <stdio.h>
-//# include <ctype.h> //  (For test)
-# include <string.h>
-# include <bsd/string.h>  // -lbsd
 
 /*Standard Part 1*/
 
@@ -35,6 +31,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+int		ft_strchar(char *str, int c);
 
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
