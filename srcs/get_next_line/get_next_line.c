@@ -6,36 +6,36 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:44:09 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/13 13:47:13 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:48:17 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[1030];
+	static char	*buffer;
 	char		*d;
 	ssize_t		l;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1029)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	d = NULL;
-	if (gnl_strchar(buffer[fd], '\n') < 0)
+	if (gnl_strchar(buffer, '\n') < 0)
 	{
-		buffer[fd] = gnl_suite(buffer[fd], fd, &l);
-		if (l != BUFFER_SIZE && gnl_strchar(buffer[fd], '\n') < 0)
-			d = gnl_substr(buffer[fd], 0, gnl_strlen(buffer[fd]));
+		buffer = gnl_suite(buffer, fd, &l);
+		if (l != BUFFER_SIZE && gnl_strchar(buffer, '\n') < 0)
+			d = gnl_substr(buffer, 0, gnl_strlen(buffer));
 	}
-	if (! buffer[fd])
+	if (! buffer)
 		return (NULL);
-	if (! d && gnl_strchar(buffer[fd], '\n') != -1)
-		d = gnl_substr(buffer[fd], 0, (gnl_strchar(buffer[fd], '\n') + 1));
-	if (!d && gnl_strchar(buffer[fd], '\n') != -1)
-		return (gnl_moinslbuffer(buffer[fd], gnl_strlen(buffer[fd])));
+	if (! d && gnl_strchar(buffer, '\n') != -1)
+		d = gnl_substr(buffer, 0, (gnl_strchar(buffer, '\n') + 1));
+	if (!d && gnl_strchar(buffer, '\n') != -1)
+		return (gnl_moinslbuffer(buffer, gnl_strlen(buffer)));
 	if (d)
 	{
-		buffer[fd] = gnl_moinslbuffer(buffer[fd], gnl_strlen(d));
+		buffer = gnl_moinslbuffer(buffer, gnl_strlen(d));
 		return (d);
 	}
 	return (get_next_line(fd));

@@ -43,7 +43,8 @@ LIB_FILE	= ft_isalpha.c \
 			  ft_tolower.c \
 			  ft_itoa.c \
 			  ft_atoi.c \
-			  ft_strchar.c
+			  ft_strchar.c \
+			  ft_valabs.c
 
 
 PF_DIR		= ft_printf/
@@ -56,8 +57,15 @@ PF_FILE		= ft_printf.c \
 			  ft_putnbr_hex.c
 
 
+GNL_DIR		= get_next_line/
+
+GNL_FILE	= get_next_line.c \
+			  get_next_line_utils.c
+
+
 SRC			+= $(addprefix ${PF_DIR}, ${PF_FILE})
 SRC			+= $(addprefix ${LIB_DIR}, ${LIB_FILE})
+SRC			+= $(addprefix ${GNL_DIR}, ${GNL_FILE})
 
 SRCS_DIR 	= srcs/
 SRCS		= $(addprefix ${SRCS_DIR}, ${SRC})
@@ -66,7 +74,7 @@ OBJS_DIR	= objects/
 OBJS		= $(addprefix ${OBJS_DIR}, ${SRC:.c=.o})
 
 CC			= cc
-INCLUDES	= -I includes
+INCLUDES	= -I ../includes
 NAME		= libft.a
 RM			= rm -f
 CFLAGS		= -Wall -Wextra -Werror ${INCLUDES}
@@ -89,25 +97,25 @@ ${OBJS_DIR}%.o: ${SRCS_DIR}%.c | ${OBJS_DIR}
 
 ${NAME}:		${OBJS}
 				@ar rcs $@ -o $^
-				@echo "${GREEN}'${NAME}' is compiled !${RESET}"
+				@echo "${GREEN}'${NAME}' is compiled ! ✅${RESET}"
 
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
 				@mkdir -p ${OBJS_DIR}${LIB_DIR}
 				@mkdir -p ${OBJS_DIR}${PF_DIR}
+				@mkdir -p ${OBJS_DIR}${GNL_DIR}
 
 bonus:			${NAME}
 
 clean:
 				@${RM} ${OBJS}
-				@${RM} -r ${LIB_DIR}
-				@${RM} -r ${PF_DIR}
+				@${RM} -r ${OBJS_DIR}${LIB_DIR} ${OBJS_DIR}${PF_DIR} ${OBJS_DIR}${GNL_DIR}
 				@${RM} -r ${OBJS_DIR}
-				@echo "${RED}'${NAME}' objects are deleted !${RESET}"
+				@echo "${RED}'${NAME}' objects are deleted ! 👍${RESET}"
 
 fclean:			clean
 				@${RM} ${NAME}
-				@echo "${RED}'${NAME}' is deleted !${RESET}"
+				@echo "${RED}'${NAME}' is deleted ! 👍${RESET}"
 
 re:				fclean all
 
