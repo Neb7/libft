@@ -6,11 +6,11 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:44:38 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/18 17:48:10 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/19 18:46:53 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
 char	*gnl_strcpycat(char *dest, char *src, char *src2)
 {

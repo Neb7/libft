@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 17:45:01 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/18 17:47:23 by benpicar         ###   ########.fr       */
+/*   Created: 2024/10/22 12:02:16 by benpicar          #+#    #+#             */
+/*   Updated: 2024/11/19 18:50:19 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 42
 # endif
 
 /*Get_next_line*/
@@ -35,5 +35,7 @@ char	*gnl_read(int fd, ssize_t *l);
 size_t	gnl_strlen(char *str);
 ssize_t	gnl_strchar(char *str, int c);
 char	*gnl_free_buffer(char *buffer);
+
+char	*get_next_line_multi(int fd);
 
 #endif
