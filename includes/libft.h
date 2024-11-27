@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:32:43 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/19 18:43:38 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:52:16 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # include "ft_printf.h"
 # include "get_next_line.h"
 
 typedef struct s_vector
 {
-	char	*d;
-	size_t	len;
+	char	*buf;
+	size_t	index;
 	size_t	max_len;
 }	t_vector;
 
@@ -77,8 +78,9 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 /*Vector*/
 
 t_vector	*ft_new_vector(void);
-t_vector	*ft_add_char_vector(char c, t_vector *vector);
-t_vector	*ft_double_len(t_vector *vector);
+t_vector	*ft_add_char_vector(char *s, t_vector *vector, size_t len);
+//t_vector	*ft_double_len(t_vector *vector);
+void		ft_free_vector(t_vector **vector);
 
 typedef struct s_list
 {

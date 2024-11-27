@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:55:05 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/13 13:48:12 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:08:33 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_putnbr_hex(char *str, t_flags *flags)
 		flags->s[0] = '0';
 	len_str = ft_strlen(str);
 	if (flags->dieze && flags->zero && len_str > 2)
-		write(1, str, 2);
+		write(flags->fd, str, 2);
 	if (flags->moins)
 		ret = ret + ft_write_str_hex(str, len_str, flags);
 	if (flags->min != -1 && (flags->min > len_str || flags->min > flags->max))
@@ -38,7 +38,7 @@ int	ft_putnbr_hex(char *str, t_flags *flags)
 		else
 			j = len_str - 1;
 		while (++j < flags->min)
-			ret = ret + write(1, flags->s, 1);
+			ret = ret + write(flags->fd, flags->s, 1);
 	}
 	if (!flags->moins)
 		ret = ret + ft_write_str_hex(str, len_str, flags);
@@ -56,13 +56,13 @@ static int	ft_write_str_hex(char *str, int len_str, t_flags *flags)
 	if (flags->dieze && len_str > 2)
 		have_dieze = 2;
 	if (flags->dieze && !flags->zero && len_str > 2)
-		write(1, str, 2);
+		write(flags->fd, str, 2);
 	ret = 0;
 	j = -1;
 	if (flags->max != -1 && flags->max > len_str - have_dieze)
 		while (++j < flags->max - len_str + have_dieze)
-			ret = ret + write(1, "0", 1);
-	write(1, &str[have_dieze], len_str - have_dieze);
+			ret = ret + write(flags->fd, "0", 1);
+	write(flags->fd, &str[have_dieze], len_str - have_dieze);
 	ret = ret + len_str;
 	return (ret);
 }

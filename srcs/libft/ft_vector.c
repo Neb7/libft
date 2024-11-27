@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:17:34 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/19 17:40:44 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:50:44 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,46 +19,41 @@ t_vector	*ft_new_vector(void)
 	new = (t_vector *)calloc(1, sizeof(t_vector));
 	if (!new)
 		return ((t_vector *) NULL);
-	new->d = (char *)calloc(2, sizeof(char));
-	if (!(new->d))
+	new->buf = (char *)calloc(2, sizeof(char));
+	if (!(new->buf))
 		return (free(new), (t_vector *) NULL);
-	new->len = 0;
+	new->index = 0;
 	new->max_len = 2;
 	return (new);
 }
 
-t_vector	*ft_add_char_vector(char c, t_vector *vector)
+t_vector	*ft_add_char_vector(char *s, t_vector *vector, size_t len)
 {
-	if (vector->len < vector->max_len)
+	char	*dbl;
+
+	if (vector->index + len < vector->max_len)
 	{
-		vector->d[vector->len] = c;
-		(vector->len)++;
+		ft_memcpy(&vector->buf[vector->index], s, len);
+		vector->index = vector->index + len;
 	}
 	else
 	{
-		vector = ft_double_len(vector);
-		if (!vector)
+		dbl = (char *)malloc(sizeof(char) * (vector->max_len * 2));
+		if (!(dbl))
 			return ((t_vector *) NULL);
-		vector->d[vector->len] = c;
-		(vector->len)++;
+		ft_memcpy(dbl, vector->buf, vector->max_len);
+		vector->max_len = vector->max_len * 2;
+		free(vector->buf);
+		vector->buf = dbl;
+		ft_memcpy(&vector->buf[vector->index], s, len);
+		vector->index = vector->index + len;
 	}
 	return (vector);
 }
 
-t_vector	*ft_double_len(t_vector *vector)
+void	ft_free_vector(t_vector **vector)
 {
-	t_vector	*dbl;
-
-	dbl = (t_vector *)malloc(sizeof(t_vector));
-	if (!dbl)
-		return (free(vector->d), free(vector), (t_vector *) NULL);
-	dbl->d = (char *)malloc(sizeof(char) * (vector->max_len * 2));
-	if (!(dbl->d))
-		return (free(vector->d), free(vector), free(dbl), (t_vector *) NULL);
-	ft_memcpy(dbl->d, vector->d, vector->max_len);
-	dbl->len = vector->max_len;
-	dbl->max_len = vector->max_len * 2;
-	free(vector->d);
-	free(vector);
-	return (dbl);
+	free((*vector)->buf);
+	free(*vector);
+	*vector = NULL;
 }
