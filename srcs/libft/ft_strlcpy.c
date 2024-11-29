@@ -6,17 +6,17 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:53:55 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:02:59 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:51:28 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Essaye de copier les 'size' - 1 caractère de 'src' dans 'dest' en rajoutant
-un '\0' à la fin
-Renvoie la taille de la chaine que elle aura essayé de créer
+/*Try to copy the 'size' - 1 character of 'src' into 'dest' by adding
+a '\0' at the end
+Returns the size of the string it has tried to create
 
-WARNING Verifier à ne pas mettre des paramètre NULL !!!*/
+WARNING Check not to set any NULL parameter!!!*/
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;

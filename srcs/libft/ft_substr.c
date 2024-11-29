@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:14:58 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/05 19:29:00 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/29 10:57:21 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static char	*ft_test(void);
 
-/*Créer une sous chaine de 's' avec malloc à partir de 'start' et de taille
-maximum 'len'*/
+/*Create a sub-string of 's' with malloc from 'start' and maximum size 'len'*/
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*d;

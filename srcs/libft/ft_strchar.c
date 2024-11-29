@@ -6,14 +6,14 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:39:48 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:02:37 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:52:24 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Cherche 'c' dans 'str' et renvoie le premier indice trouvé ou -1 sùil ne
-trouve rien*/
+/*Search for 'c' in 'str' and return the first clue found or -1 if it does not
+find nothing*/
 int	ft_strchar(char *str, int c)
 {
 	int	i;

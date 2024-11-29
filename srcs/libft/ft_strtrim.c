@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:26:06 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/05 19:20:34 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/29 10:57:50 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char	*ft_strim_tmp(char const *s1, char const *set, int i, int j);
 static int	ft_strchar_tmp(char const *str, char to_find);
 
-/*Trime la chaine 's1' avec les caractère de la chaine 'set'*/
+/*Trime the string 's1' with the characters of the string 'set'*/
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	if (!s1)

@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:32:43 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/27 12:52:16 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:27:35 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 
+# ifndef T_VECTOR
+#  define T_VECTOR
+
 typedef struct s_vector
 {
 	char	*buf;
 	size_t	index;
 	size_t	max_len;
 }	t_vector;
+
+# endif
 
 /*Standard Part 1*/
 
@@ -48,6 +53,7 @@ void		ft_bzero(void *s, size_t n);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		*ft_memmove(void *dest, const void *src, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
+ssize_t		ft_memchar(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 
 int			ft_atoi(const char *nptr);
