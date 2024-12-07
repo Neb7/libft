@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:32:43 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 12:27:35 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:37:58 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,12 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 
-# ifndef T_VECTOR
-#  define T_VECTOR
-
-typedef struct s_vector
+typedef struct s_vector_uint
 {
-	char	*buf;
-	size_t	index;
-	size_t	max_len;
-}	t_vector;
-
-# endif
+	unsigned int	*buf;
+	size_t			index;
+	size_t			max_len;
+}	t_vector_uint;
 
 /*Standard Part 1*/
 
@@ -46,7 +41,7 @@ char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
-int			ft_strchar(char *str, int c);
+ssize_t		ft_strchar(char *str, int c);
 
 void		*ft_memset(void *s, int c, size_t n);
 void		ft_bzero(void *s, size_t n);
@@ -83,10 +78,13 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 /*Vector*/
 
-t_vector	*ft_new_vector(void);
-t_vector	*ft_add_char_vector(char *s, t_vector *vector, size_t len);
+t_vector	*ft_new_vector(size_t nb_octect);
+t_vector	*ft_add_char_vector(void *s, t_vector *vector, size_t len, \
+size_t nb_octect);
+t_vector	*ft_add_uint_vector(unsigned int *s, t_vector *vector, size_t len);
 //t_vector	*ft_double_len(t_vector *vector);
 void		ft_free_vector(t_vector **vector);
+char		*ft_vtos(t_vector	*vector);
 
 typedef struct s_list
 {

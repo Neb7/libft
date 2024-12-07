@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:32:41 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 12:38:25 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:22:17 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_next_line(int fd)
 	t_buffer		*actual;
 	char			*d;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	d = NULL;
 	if (!buffer)
@@ -55,7 +55,7 @@ static char	*ft_gnl_read(t_buffer *actual, char **d, ssize_t idx_nl)
 		return (free(buf), NULL);
 	while (readed > 0)
 	{
-		if (!ft_add_char_vector(buf, actual->vec, readed))
+		if (!ft_add_char_vector(buf, actual->vec, readed, sizeof(char)))
 			return (free(buf), NULL);
 		idx_nl = ft_memchar(actual->vec->buf, '\n', actual->vec->index);
 		if (idx_nl != -1)
@@ -123,7 +123,7 @@ static t_buffer	*ft_new_struct(int fd)
 		return (NULL);
 	new->fd = fd;
 	new->next = NULL;
-	new->vec = ft_new_vector();
+	new->vec = ft_new_vector(sizeof(char));
 	if (!new->vec)
 		return (free(new), NULL);
 	new->end = false;

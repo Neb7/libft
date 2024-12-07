@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: benpicar <benpicar@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:57:42 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:02:32 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:55:50 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,14 @@ static char	**ft_fail_alloc(char **d, int i)
 static char	*ft_strdup_tmp3(char const *s, size_t *j, int n, char c)
 {
 	char	*dp;
-	int		i;
 
-	i = 0;
 	while (s[n] != '\0' && s[n] != c)
 		n++;
 	dp = (char *) malloc(sizeof(char) * (n + 1));
 	if (! dp)
 		return (NULL);
-	while (i < n)
-	{
-		dp[i] = s[i];
-		i++;
-	}
-	dp[i] = 0;
+	ft_memcpy(dp, s, n);
+	dp[n] = 0;
 	*j = *j + n;
 	return (dp);
 }

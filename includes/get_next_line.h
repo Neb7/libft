@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: benpicar <benpicar@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:33:32 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 12:27:25 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:07:22 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,17 @@
 
 # include <unistd.h>
 # include <stdbool.h>
-# include "libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
 
-# ifndef T_VECTOR
-#  define T_VECTOR
-
 typedef struct s_vector
 {
-	char	*buf;
+	void	*buf;
 	size_t	index;
 	size_t	max_len;
 }	t_vector;
-
-# endif
 
 typedef struct s_buffer
 {

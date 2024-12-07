@@ -78,7 +78,7 @@ CC			= cc
 INCLUDES	= -I includes
 NAME		= libft.a
 RM			= rm -f
-CFLAGS		= -Wall -Wextra -Werror ${INCLUDES}
+CFLAGS		= -Wall -Wextra -Werror ${INCLUDES} -g
 
 #Colors
 GRAY		= \033[0;90m

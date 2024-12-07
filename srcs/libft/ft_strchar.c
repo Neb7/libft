@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: benpicar <benpicar@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:39:48 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 11:52:24 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:11:20 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 /*Search for 'c' in 'str' and return the first clue found or -1 if it does not
 find nothing*/
-int	ft_strchar(char *str, int c)
+ssize_t	ft_strchar(char *str, int c)
 {
-	int	i;
+	ssize_t	i;
 
 	if (! str)
 		return (-1);
