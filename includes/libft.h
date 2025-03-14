@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:32:43 by benpicar          #+#    #+#             */
-/*   Updated: 2025/02/07 15:15:19 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:20:56 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
+int			ft_isspace(int c);
 
 size_t		ft_strlen(const char *s);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
