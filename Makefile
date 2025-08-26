@@ -1,112 +1,76 @@
-LIB_DIR		= libft/
-
-LIB_FILE	= ft_isalpha.c \
+SRCS		= ft_isalpha.c \
+			  ft_strrchr.c \
+			  ft_atoi.c \
+			  ft_strdup.c \
 			  ft_isdigit.c \
 			  ft_isalnum.c \
 			  ft_isascii.c \
 			  ft_isprint.c \
-			  ft_lstadd_back.c \
-			  ft_lstadd_front.c \
-			  ft_lstclear.c \
-			  ft_lstdelone.c \
-			  ft_lstiter.c \
-			  ft_lstlast.c \
-			  ft_lstmap.c \
-			  ft_lstnew.c \
-			  ft_lstsize.c \
+			  ft_toupper.c \
+			  ft_tolower.c \
+			  ft_strchr.c \
+			  ft_strncmp.c \
+			  ft_strnstr.c \
 			  ft_calloc.c \
+			  ft_strlen.c \
 			  ft_bzero.c \
 			  ft_memset.c \
 			  ft_memcpy.c \
 			  ft_memmove.c \
+			  ft_strlcpy.c \
+			  ft_strlcat.c \
 			  ft_memchr.c \
 			  ft_memcmp.c \
+			  ft_itoa.c \
 			  ft_putchar_fd.c \
 			  ft_putendl_fd.c \
 			  ft_putnbr_fd.c \
 			  ft_putstr_fd.c \
-			  ft_strchr.c \
-			  ft_strncmp.c \
-			  ft_strnstr.c \
-			  ft_strlcpy.c \
-			  ft_strlcat.c \
-			  ft_strrchr.c \
-			  ft_strdup.c \
 			  ft_split.c \
 			  ft_striteri.c \
 			  ft_strjoin.c \
 			  ft_strmapi.c \
 			  ft_strtrim.c \
-			  ft_substr.c \
-			  ft_strlen.c \
-			  ft_toupper.c \
-			  ft_tolower.c \
-			  ft_itoa.c \
-			  ft_atoi.c \
-			  ft_strchar.c \
-			  ft_valabs.c \
-			  ft_vector.c \
-			  ft_isspace.c
+			  ft_substr.c
 
+OBJS		= ${SRCS:.c=.o}
 
-GNL_DIR		= get_next_line/
+SRCS_BONUS	= ft_lstadd_back_bonus.c \
+			  ft_lstadd_front_bonus.c \
+			  ft_lstclear_bonus.c \
+			  ft_lstdelone_bonus.c \
+			  ft_lstiter_bonus.c \
+			  ft_lstlast_bonus.c \
+			  ft_lstmap_bonus.c \
+			  ft_lstnew_bonus.c \
+			  ft_lstsize_bonus.c
 
-GNL_FILE	= get_next_line.c \
-			  get_next_line_utils.c
+OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
 
-
-SRC			+= $(addprefix ${LIB_DIR}, ${LIB_FILE})
-SRC			+= $(addprefix ${GNL_DIR}, ${GNL_FILE})
-
-SRCS_DIR 	= srcs/
-SRCS		= $(addprefix ${SRCS_DIR}, ${SRC})
-
-OBJS_DIR	= objects/
-OBJS		= $(addprefix ${OBJS_DIR}, ${SRC:.c=.o})
-
-CC			= cc
-INCLUDES	= -I includes
 NAME		= libft.a
+
 RM			= rm -f
-CFLAGS		= -Wall -Wextra -Werror ${INCLUDES} -g
 
-#Colors
-GRAY		= \033[0;90m
-RED			= \033[0;91m
-GREEN		= \033[0;92m
-YELLOW		= \033[0;93m
-BLUE		= \033[0;94m
-MAGENTA		= \033[0;95m
-CYAN		= \033[0;96m
-WHITE		= \033[0;97m
-RESET		= \033[0m
+CFLAGS		= -Wall -Wextra -Werror
+CC			= cc
 
-all:			${NAME}
+all:		${NAME}
 
-${OBJS_DIR}%.o: ${SRCS_DIR}%.c | ${OBJS_DIR}
-				@${CC} ${CFLAGS} -c $< -o $@
+.c.o:
+			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}:		${OBJS}
-				@ar rcs $@ -o $^
-				@echo "${GREEN}'${NAME}' is compiled ! ✅${RESET}"
+${NAME}:	${OBJS}
+			ar rcs $@ -o $^
 
-${OBJS_DIR}:
-				@mkdir -p ${OBJS_DIR}
-				@mkdir -p ${OBJS_DIR}${LIB_DIR}
-				@mkdir -p ${OBJS_DIR}${GNL_DIR}
-
-bonus:			${NAME}
+bonus:		${NAME} ${OBJS_BONUS}
+			ar rs ${NAME} -o ${OBJS_BONUS}
 
 clean:
-				@${RM} ${OBJS}
-				@${RM} -r ${OBJS_DIR}${LIB_DIR} ${OBJS_DIR}${GNL_DIR}
-				@${RM} -r ${OBJS_DIR}
-				@echo "${RED}'${NAME}' objects are deleted ! 👍${RESET}"
+			${RM} ${OBJS} ${OBJS_BONUS}
 
-fclean:			clean
-				@${RM} ${NAME}
-				@echo "${RED}'${NAME}' is deleted ! 👍${RESET}"
+fclean:		clean
+			${RM} ${NAME}
 
-re:				fclean all
+re:			fclean all
 
-.PHONY:			all clean fclean re bonus
+.PHONY:		all clean fclean re bonus

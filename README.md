@@ -1,2 +1,3 @@
 # libft
-libft updated (not for moulinette)
+
+Libft project
