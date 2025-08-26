@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:32:43 by benpicar          #+#    #+#             */
-/*   Updated: 2024/12/09 12:31:28 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:15:19 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,19 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include "ft_printf.h"
 # include "get_next_line.h"
 
-typedef struct s_vector_uint
+# ifndef S_VECTOR
+#  define S_VECTOR
+
+typedef struct s_vector
 {
 	unsigned int	*buf;
 	size_t			index;
 	size_t			max_len;
-}	t_vector_uint;
+}	t_vector;
+
+# endif
 
 /*Standard Part 1*/
 
@@ -40,6 +44,7 @@ size_t		ft_strlcat(char *dest, const char *src, size_t count);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
 ssize_t		ft_strchar(char *str, int c);
 
@@ -70,6 +75,7 @@ void		ft_putstr_fd(char *s, int fd);
 
 char		**ft_split(char const *s, char c);
 char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin_free(char *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 

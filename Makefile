@@ -48,23 +48,12 @@ LIB_FILE	= ft_isalpha.c \
 			  ft_vector.c
 
 
-PF_DIR		= ft_printf/
-
-PF_FILE		= ft_printf.c \
-			  ft_printf_utils.c \
-			  ft_printf_put.c \
-			  ft_itoa_base.c \
-			  ft_putnbrstr.c \
-			  ft_putnbr_hex.c
-
-
 GNL_DIR		= get_next_line/
 
 GNL_FILE	= get_next_line.c \
 			  get_next_line_utils.c
 
 
-SRC			+= $(addprefix ${PF_DIR}, ${PF_FILE})
 SRC			+= $(addprefix ${LIB_DIR}, ${LIB_FILE})
 SRC			+= $(addprefix ${GNL_DIR}, ${GNL_FILE})
 
@@ -103,14 +92,13 @@ ${NAME}:		${OBJS}
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
 				@mkdir -p ${OBJS_DIR}${LIB_DIR}
-				@mkdir -p ${OBJS_DIR}${PF_DIR}
 				@mkdir -p ${OBJS_DIR}${GNL_DIR}
 
 bonus:			${NAME}
 
 clean:
 				@${RM} ${OBJS}
-				@${RM} -r ${OBJS_DIR}${LIB_DIR} ${OBJS_DIR}${PF_DIR} ${OBJS_DIR}${GNL_DIR}
+				@${RM} -r ${OBJS_DIR}${LIB_DIR} ${OBJS_DIR}${GNL_DIR}
 				@${RM} -r ${OBJS_DIR}
 				@echo "${RED}'${NAME}' objects are deleted ! 👍${RESET}"
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benpicar <benpicar@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: llemmel <llemmel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:33:32 by benpicar          #+#    #+#             */
-/*   Updated: 2024/12/03 18:07:22 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:50:16 by llemmel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,17 @@
 #  define BUFFER_SIZE 1024
 # endif
 
+# ifndef S_VECTOR
+#  define S_VECTOR
+
 typedef struct s_vector
 {
 	void	*buf;
 	size_t	index;
 	size_t	max_len;
 }	t_vector;
+
+# endif
 
 typedef struct s_buffer
 {
@@ -37,7 +42,7 @@ typedef struct s_buffer
 
 /*Get_next_line*/
 
-char		*get_next_line(int fd);
+char		*get_next_line(int fd, int end);
 
 /*Get_next_line_utils*/
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: llemmel <llemmel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:32:41 by benpicar          #+#    #+#             */
-/*   Updated: 2024/12/05 13:22:17 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:49:10 by llemmel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char		*ft_gnl_dest(char **d, char *buf, ssize_t idx, t_buffer \
 static t_buffer	*ft_actual_fd(t_buffer **start, int fd);
 static t_buffer	*ft_new_struct(int fd);
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int end)
 {
 	static t_buffer	*buffer = NULL;
 	t_buffer		*actual;
@@ -32,7 +32,7 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (ft_free_all(&buffer, buffer, NULL, NULL), free(d), NULL);
 	actual = ft_actual_fd(&buffer, fd);
-	if (!actual)
+	if (!actual || end == 1)
 		return (ft_free_all(&buffer, actual, NULL, NULL), free(d), NULL);
 	if (!(ft_gnl_read(actual, &d, ft_memchar(actual->vec->buf, '\n', \
 	actual->vec->index))))
