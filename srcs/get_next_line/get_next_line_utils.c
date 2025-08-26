@@ -5,87 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 17:44:38 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/19 18:46:53 by benpicar         ###   ########.fr       */
+/*   Created: 2024/11/27 13:44:12 by benpicar          #+#    #+#             */
+/*   Updated: 2024/11/29 10:52:23 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*gnl_strcpycat(char *dest, char *src, char *src2)
+void	ft_free_all(t_buffer **start, t_buffer *tmp, t_buffer *tmp2, \
+t_buffer *tmp3)
 {
-	size_t	i;
-	size_t	j;
+	bool		check;
 
-	i = 0;
-	j = 0;
-	while (src[i] != '\0')
+	check = false;
+	tmp3 = *start;
+	if (tmp3 == tmp)
+		check = true;
+	else
+		while (tmp3->next != tmp)
+			tmp3 = tmp3->next;
+	if (tmp != NULL)
 	{
-		dest[i] = src[i];
-		i++;
+		tmp2 = tmp->next;
+		free(tmp->vec->buf);
+		free(tmp->vec);
+		free(tmp);
 	}
-	while (src2[j] != '\0')
+	tmp = *start;
+	if (check)
+		*start = tmp2;
+	else
 	{
-		dest[i] = src2[j];
-		i++;
-		j++;
+		tmp3->next = tmp2;
 	}
-	dest[i] = 0;
-	return (dest);
-}
-
-char	*gnl_read(int fd, ssize_t *l)
-{
-	char	*p;
-	ssize_t	n;
-
-	p = ((char *)malloc(sizeof(char) * (BUFFER_SIZE + 1)));
-	if (! p)
-		return (NULL);
-	n = read(fd, p, BUFFER_SIZE);
-	*l = n;
-	if (n < 0)
-	{
-		free(p);
-		return (NULL);
-	}
-	p[n] = 0;
-	return (p);
-}
-
-size_t	gnl_strlen(char *str)
-{
-	size_t	i;
-
-	if (! str)
-		return (0);
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-ssize_t	gnl_strchar(char *str, int c)
-{
-	ssize_t	i;
-
-	if (! str)
-		return (-1);
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == (unsigned char)c)
-			return (i);
-		i++;
-	}
-	if (c == 0)
-		return (i);
-	return (-1);
-}
-
-char	*gnl_free_buffer(char *buffer)
-{
-	if (buffer)
-		free(buffer);
-	return (NULL);
 }

@@ -6,14 +6,14 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:38:12 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/11 13:29:57 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/29 10:59:21 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Créer une nouvelle chaine avec malloc et y met les retours de 'f' de chaque
-caractère de 's'*/
+/*Create a new chain with malloc and put the returns of 'f' from each character
+of 's*/
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*d;

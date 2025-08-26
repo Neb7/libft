@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:02:24 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:02:13 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:02:03 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,28 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	size_t	i;
 
 	if (!dest || !src)
 		return (NULL);
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
-	i = 0;
-	if (d > s && d < s + n)
-		while (n--)
-			d[n] = s[n];
+	i = n;
+	if (dest > src && dest < src + n)
+	{
+		while (n % sizeof(long long) > 0)
+		{
+			((unsigned char *)dest)[i - 1] = ((unsigned char *)src)[i - 1];
+			n--;
+			i--;
+		}
+		i = i / sizeof(long long);
+		while (n > 0)
+		{
+			((long long *)dest)[i - 1] = ((long long *)src)[i - 1];
+			i--;
+			n = n - sizeof(long long);
+		}
+	}
 	else
-		while (i++ < n)
-			d[i - 1] = s[i - 1];
+		ft_memcpy(dest, src, n);
 	return (dest);
 }

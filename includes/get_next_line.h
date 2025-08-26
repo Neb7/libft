@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: benpicar <benpicar@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 12:02:16 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/27 13:38:27 by benpicar         ###   ########.fr       */
+/*   Created: 2024/11/27 13:33:32 by benpicar          #+#    #+#             */
+/*   Updated: 2024/12/03 18:07:22 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,34 @@
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>
-# include <stdlib.h>
+# include <stdbool.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
 
+typedef struct s_vector
+{
+	void	*buf;
+	size_t	index;
+	size_t	max_len;
+}	t_vector;
+
+typedef struct s_buffer
+{
+	t_vector		*vec;
+	int				fd;
+	struct s_buffer	*next;
+	bool			end;
+}	t_buffer;
+
 /*Get_next_line*/
 
-char	*get_next_line(int fd);
-char	*gnl_moinslbuffer(char *buffer, size_t t);
-char	*gnl_mettrea0(void);
-char	*gnl_substr(char *s, unsigned int start, size_t len);
-char	*gnl_suite(char *buffer, int fd, ssize_t *l);
+char		*get_next_line(int fd);
 
-/*Get_next_line_util*/
+/*Get_next_line_utils*/
 
-char	*gnl_strcpycat(char *dest, char *src, char *src2);
-char	*gnl_read(int fd, ssize_t *l);
-size_t	gnl_strlen(char *str);
-ssize_t	gnl_strchar(char *str, int c);
-char	*gnl_free_buffer(char *buffer);
-
-char	*get_next_line_multi(int fd);
+void		ft_free_all(t_buffer **start, t_buffer *tmp, t_buffer *tmp2, \
+t_buffer *tmp3);
 
 #endif

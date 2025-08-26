@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: benpicar <benpicar@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:39:48 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:02:37 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:11:20 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Cherche 'c' dans 'str' et renvoie le premier indice trouvé ou -1 sùil ne
-trouve rien*/
-int	ft_strchar(char *str, int c)
+/*Search for 'c' in 'str' and return the first clue found or -1 if it does not
+find nothing*/
+ssize_t	ft_strchar(char *str, int c)
 {
-	int	i;
+	ssize_t	i;
 
 	if (! str)
 		return (-1);

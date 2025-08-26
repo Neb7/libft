@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:32:43 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/27 12:52:16 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:31:28 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 
-typedef struct s_vector
+typedef struct s_vector_uint
 {
-	char	*buf;
-	size_t	index;
-	size_t	max_len;
-}	t_vector;
+	unsigned int	*buf;
+	size_t			index;
+	size_t			max_len;
+}	t_vector_uint;
 
 /*Standard Part 1*/
 
@@ -41,13 +41,14 @@ char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
-int			ft_strchar(char *str, int c);
+ssize_t		ft_strchar(char *str, int c);
 
 void		*ft_memset(void *s, int c, size_t n);
 void		ft_bzero(void *s, size_t n);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		*ft_memmove(void *dest, const void *src, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
+ssize_t		ft_memchar(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 
 int			ft_atoi(const char *nptr);
@@ -77,10 +78,13 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 /*Vector*/
 
-t_vector	*ft_new_vector(void);
-t_vector	*ft_add_char_vector(char *s, t_vector *vector, size_t len);
+t_vector	*ft_new_vector(size_t nb_octect);
+t_vector	*ft_add_char_vector(void *s, t_vector *vector, size_t len, \
+size_t nb_octect);
+t_vector	*ft_add_uint_vector(unsigned int *s, t_vector *vector, size_t len);
 //t_vector	*ft_double_len(t_vector *vector);
 void		ft_free_vector(t_vector **vector);
+char		*ft_vtos(t_vector	*vector);
 
 typedef struct s_list
 {
