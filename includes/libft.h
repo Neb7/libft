@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:32:43 by benpicar          #+#    #+#             */
-/*   Updated: 2025/02/07 15:15:19 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/05/13 16:38:25 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 typedef struct s_vector
 {
-	unsigned int	*buf;
-	size_t			index;
-	size_t			max_len;
+	void	*buf;
+	size_t	index;
+	size_t	max_len;
 }	t_vector;
 
 # endif
@@ -37,6 +37,7 @@ int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
+int			ft_isspace(int c);
 
 size_t		ft_strlen(const char *s);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
@@ -57,6 +58,7 @@ ssize_t		ft_memchar(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 
 int			ft_atoi(const char *nptr);
+int			ft_atoi_i(const char *nptr, int *idx);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 
@@ -88,7 +90,7 @@ t_vector	*ft_new_vector(size_t nb_octect);
 t_vector	*ft_add_char_vector(void *s, t_vector *vector, size_t len, \
 size_t nb_octect);
 t_vector	*ft_add_uint_vector(unsigned int *s, t_vector *vector, size_t len);
-//t_vector	*ft_double_len(t_vector *vector);
+//t_vector	*ft_float_len(t_vector *vector);
 void		ft_free_vector(t_vector **vector);
 char		*ft_vtos(t_vector	*vector);
 

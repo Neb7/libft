@@ -45,7 +45,8 @@ LIB_FILE	= ft_isalpha.c \
 			  ft_atoi.c \
 			  ft_strchar.c \
 			  ft_valabs.c \
-			  ft_vector.c
+			  ft_vector.c \
+			  ft_isspace.c
 
 
 GNL_DIR		= get_next_line/

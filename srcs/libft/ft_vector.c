@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:17:34 by benpicar          #+#    #+#             */
-/*   Updated: 2024/12/09 14:02:06 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:57:24 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ size_t nb_octect)
 	}
 	else
 	{
-		dbl = (void *)malloc(nb_octect * ((vector->max_len * 2) + len));
+		dbl = (void *)ft_calloc(nb_octect, ((vector->max_len * 2) + len));
 		if (!(dbl))
 			return ((t_vector *) NULL);
 		ft_memcpy(dbl, vector->buf, vector->index * nb_octect);
