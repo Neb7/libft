@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 11:52:35 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/13 13:47:47 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:07:54 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	ft_printf_putchar(int c, t_flags *flags)
 	i = 0;
 	if (!flags->moins)
 		while (++i < flags->min)
-			write(1, " ", 1);
-	write(1, &c, 1);
+			write(flags->fd, " ", 1);
+	write(flags->fd, &c, 1);
 	if (flags->moins)
 		while (++i < flags->min)
-			write(1, " ", 1);
+			write(flags->fd, " ", 1);
 	return (i);
 }
 
@@ -46,15 +46,15 @@ int	ft_printf_putstr(char *str, t_flags *flags)
 	if (flags->max != -1 && flags->max < i)
 		i = flags->max;
 	if (flags->moins)
-		write(1, str, i);
+		write(flags->fd, str, i);
 	if (flags->min != -1 && flags->min > i)
 	{
 		j = i - 1;
 		while (++j < flags->min)
-			ret = ret + write(1, flags->s, 1);
+			ret = ret + write(flags->fd, flags->s, 1);
 	}
 	if (!flags->moins)
-		write(1, str, i);
+		write(flags->fd, str, i);
 	ret = ret + i;
 	return (ret);
 }
@@ -92,12 +92,12 @@ static int	ft_putnil(char *str, t_flags *flags, int len)
 	j = -1;
 	ret = len;
 	if (flags->moins)
-		write(1, str, len);
+		write(flags->fd, str, len);
 	if (flags->min != -1 && flags->min > len)
 		while (++j < flags->min - len)
-			ret = ret + write(1, flags->s, 1);
+			ret = ret + write(flags->fd, flags->s, 1);
 	if (!flags->moins)
-		write(1, str, len);
+		write(flags->fd, str, len);
 	return (ret);
 }
 
@@ -109,15 +109,15 @@ static int	ft_putnull(char *str, t_flags *flags, int len)
 	j = -1;
 	ret = len;
 	if (flags->moins && (flags->max >= len || flags->max == -1))
-		write(1, str, len);
+		write(flags->fd, str, len);
 	if (flags->min != -1 && flags->min > len && flags->max >= len)
 		while (++j < flags->min - len)
-			ret = ret + write(1, flags->s, 1);
+			ret = ret + write(flags->fd, flags->s, 1);
 	else if (flags->max != -1 && flags->max < len && flags->min != -1)
 		while (++j < flags->min)
-			ret = ret + write(1, flags->s, 1);
+			ret = ret + write(flags->fd, flags->s, 1);
 	if (!flags->moins && (flags-> max >= len || flags->max == -1))
-		write(1, str, len);
+		write(flags->fd, str, len);
 	if (!(flags-> max >= len) && flags->max != -1)
 		ret = ret - len;
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 14:55:19 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/12 14:50:48 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:02:29 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,18 @@ typedef struct s_flags
 	ssize_t	min;
 	ssize_t	max;
 	char	s[2];
+	int		fd;
 }	t_flags;
+
+typedef struct s_index
+{
+	int	i;
+	int	j;
+}	t_index;
 
 /*ft_printf*/
 
-int		ft_printf(const char *str, ...);
+int		ft_fprintf(int fd, const char *str, ...);
 
 /*ft_printf_utils.c*/
 

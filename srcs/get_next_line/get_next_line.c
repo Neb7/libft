@@ -6,11 +6,11 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:44:09 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/18 17:48:17 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/19 18:47:06 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {

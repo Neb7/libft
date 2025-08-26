@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:11:31 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:02:24 by benpicar         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:54:40 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(nb / 10, fd);
 		nb = nb % 10;
 	}
-	ft_putchar_fd(nb + '0', fd);
+	ft_putchar_fd("0123456789"[nb], fd);
 }

@@ -44,7 +44,8 @@ LIB_FILE	= ft_isalpha.c \
 			  ft_itoa.c \
 			  ft_atoi.c \
 			  ft_strchar.c \
-			  ft_valabs.c
+			  ft_valabs.c \
+			  ft_vector.c
 
 
 PF_DIR		= ft_printf/
@@ -74,7 +75,7 @@ OBJS_DIR	= objects/
 OBJS		= $(addprefix ${OBJS_DIR}, ${SRC:.c=.o})
 
 CC			= cc
-INCLUDES	= -Iincludes
+INCLUDES	= -I includes
 NAME		= libft.a
 RM			= rm -f
 CFLAGS		= -Wall -Wextra -Werror ${INCLUDES}
