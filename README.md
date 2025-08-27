@@ -2,6 +2,8 @@
 
 Updated version of the **libft** project.
 
+If you want to use the initial version of the project, run :
+
 ```bash
 # Clone libft
 git clone https://github.com/Neb7/libft.git
