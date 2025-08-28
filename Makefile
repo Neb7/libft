@@ -83,12 +83,34 @@ RESET		= \033[0m
 
 all:			${NAME}
 
+#${OBJS_DIR}%.o: ${SRCS_DIR}%.c | ${OBJS_DIR}
+#				@${CC} ${CFLAGS} -c $< -o $@
+PROGRESS_FILE = .progress_count
+TOTAL_FILES = $(words $(OBJS))
+
+define show_progress
+	count=$$(cat $(PROGRESS_FILE)); \
+	count=$$((count + 1)); \
+	echo $$count > $(PROGRESS_FILE); \
+	percent=$$(( 100 * $$count / $(TOTAL_FILES) )); \
+	bar_len=30; \
+	filled=$$(( bar_len * $$count / $(TOTAL_FILES) )); \
+	bar=""; \
+	for i in $$(seq 1 $$filled); do bar="$$bar#"; done; \
+	for i in $$(seq $$((bar_len - filled))); do bar="$$bar-"; done; \
+	printf "\r${YELLOW}[%-30s] %3d%% (%d/%d)${RESET}" "$$bar" "$$percent" "$$count" "$(TOTAL_FILES)"; \
+	if [ $$count -eq $(TOTAL_FILES) ]; then echo; fi
+endef
+
 ${OBJS_DIR}%.o: ${SRCS_DIR}%.c | ${OBJS_DIR}
 				@${CC} ${CFLAGS} -c $< -o $@
+				@if [ ! -f $(PROGRESS_FILE) ]; then echo 0 > $(PROGRESS_FILE); fi
+				@$(call show_progress)
 
 ${NAME}:		${OBJS}
 				@ar rcs $@ -o $^
 				@echo "${GREEN}'${NAME}' is compiled ! ✅${RESET}"
+				@rm -f $(PROGRESS_FILE)
 
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
@@ -101,6 +123,7 @@ clean:
 				@${RM} ${OBJS}
 				@${RM} -r ${OBJS_DIR}${LIB_DIR} ${OBJS_DIR}${GNL_DIR}
 				@${RM} -r ${OBJS_DIR}
+				@${RM} -f $(PROGRESS_FILE)
 				@echo "${RED}'${NAME}' objects are deleted ! 👍${RESET}"
 
 fclean:			clean
