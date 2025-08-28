@@ -70,7 +70,7 @@ NAME		= libft.a
 RM			= rm -f
 CFLAGS		= -Wall -Wextra -Werror ${INCLUDES} -g
 
-#Colors
+# Colors
 GRAY		= \033[0;90m
 RED			= \033[0;91m
 GREEN		= \033[0;92m
@@ -81,12 +81,10 @@ CYAN		= \033[0;96m
 WHITE		= \033[0;97m
 RESET		= \033[0m
 
-all:			${NAME}
 
-#${OBJS_DIR}%.o: ${SRCS_DIR}%.c | ${OBJS_DIR}
-#				@${CC} ${CFLAGS} -c $< -o $@
-PROGRESS_FILE = .progress_count
-TOTAL_FILES = $(words $(OBJS))
+# Progress tracking
+PROGRESS_FILE	= .progress_count
+TOTAL_FILES		= $(words $(OBJS))
 
 define show_progress
 	count=$$(cat $(PROGRESS_FILE)); \
@@ -101,6 +99,8 @@ define show_progress
 	printf "\r${YELLOW}[%-30s] %3d%% (%d/%d)${RESET}" "$$bar" "$$percent" "$$count" "$(TOTAL_FILES)"; \
 	if [ $$count -eq $(TOTAL_FILES) ]; then echo; fi
 endef
+
+all:			${NAME}
 
 ${OBJS_DIR}%.o: ${SRCS_DIR}%.c | ${OBJS_DIR}
 				@${CC} ${CFLAGS} -c $< -o $@
