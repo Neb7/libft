@@ -6,12 +6,20 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:41:25 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:01:56 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 15:59:04 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief	Iterates the list 'lst' and applies the function 'f' to the content
+ * 
+ * @param	lst The head of the list
+ * @param	f The function to apply to the content of each element
+ * @param	del The function to delete the content of an element if needed
+ * @return	t_list* The head of the new list, or NULL if allocation fails
+ */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*begin_new_lst;

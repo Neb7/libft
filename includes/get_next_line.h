@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llemmel <llemmel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:33:32 by benpicar          #+#    #+#             */
-/*   Updated: 2025/01/07 15:50:16 by llemmel          ###   ########.fr       */
+/*   Updated: 2025/08/28 11:39:59 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_vector
 	void	*buf;
 	size_t	index;
 	size_t	max_len;
+	size_t	nb_octect;
 }	t_vector;
 
 # endif

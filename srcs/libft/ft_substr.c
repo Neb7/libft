@@ -6,15 +6,22 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:14:58 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 10:57:21 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:10:52 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_test(void);
+static char	*ft_null_string(void);
 
-/*Create a sub-string of 's' with malloc from 'start' and maximum size 'len'*/
+/**
+ * @brief	Creates a substring from the string 's'
+ * 
+ * @param	s The string to create the substring from
+ * @param	start The starting index of the substring in the string 's'
+ * @param	len The maximum length of the substring
+ * @return	char* The substring, or NULL if an error occured
+ */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*d;
@@ -26,7 +33,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	len_s = ft_strlen(s);
 	if (len_s <= start)
-		return (ft_test());
+		return (ft_null_string());
 	if (len_s - start >= len)
 		d = (char *)malloc(sizeof(char) * (len + 1));
 	else
@@ -42,7 +49,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (d);
 }
 
-static char	*ft_test(void)
+/**
+ * @brief	Returns an allocated empty string
+ * 
+ * @return	char* The allocated empty string, or NULL if an error occured
+ */
+static char	*ft_null_string(void)
 {
 	char	*d;
 

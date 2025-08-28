@@ -6,12 +6,22 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:05:36 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:02:56 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 13:34:43 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief	Appends the string 'src' to the end of 'dest'. It will append at
+ * 			most 'count - strlen(dest) - 1' characters. It will then
+ * 			null-terminate the result if 'count' is not 0.
+ * 
+ * @param	dest The destination buffer
+ * @param	src The source string
+ * @param	count The size of the destination buffer
+ * @return	The total length of the string it tried to create
+ */
 size_t	ft_strlcat(char *dest, const char *src, size_t count)
 {
 	size_t	i;

@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:18:07 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:01:28 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:01:41 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ static void	ft_n_negatif(unsigned int nb, char *d, int i);
 static void	ft_n_positif(unsigned int nb, char *d, int i);
 static int	ft_len_d(int n, int count, unsigned int n_un);
 
+/**
+ * @brief	Converts an integer to a allocated null-terminated string
+ * 
+ * @param	n The integer to convert
+ * @return	char* The converted string, or NULL if an error occured
+ */
 char	*ft_itoa(int n)
 {
 	char	*d;

@@ -6,12 +6,21 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:38:43 by benpicar          #+#    #+#             */
-/*   Updated: 2024/12/02 13:51:48 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:52:50 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief	Fills the first 'n' bytes of the memory area pointed to by 's'
+ * 			with the constant byte 'c'
+ * 
+ * @param	s The memory area to fill
+ * @param	c The byte to fill the memory area with
+ * @param	n The number of bytes to fill
+ * @return	The memory area 's'
+ */
 void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t		i;

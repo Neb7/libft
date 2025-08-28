@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: benpicar <benpicar@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:57:42 by benpicar          #+#    #+#             */
-/*   Updated: 2024/12/03 15:55:50 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:48:50 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ static char	*ft_strdup_tmp3(char const *s, size_t *j, int n, char c);
 static int	ft_nbrstr(char const *str, char c);
 static char	**ft_is_not_nul(char const *s, char c, int nb_s, int i);
 
+/**
+ * @brief	Splits a string into an array of strings using a delimiter
+ * 
+ * @param	s The string to split
+ * @param	c The delimiter character
+ * @return	char** The array of strings, or NULL if an error occured
+ */
 char	**ft_split(char const *s, char c)
 {
 	char	**d;
@@ -32,6 +39,13 @@ char	**ft_split(char const *s, char c)
 	return (ft_is_not_nul(s, c, ft_nbrstr(s, c), 0));
 }
 
+/**
+ * @brief	Counts the number of substrings in a string separated by a delimiter
+ * 
+ * @param	str The string to analyze
+ * @param	c The delimiter character
+ * @return	int The number of substrings
+ */
 static char	**ft_is_not_nul(char const *s, char c, int nb_s, int i)
 {
 	char	**d;
@@ -56,6 +70,14 @@ static char	**ft_is_not_nul(char const *s, char c, int nb_s, int i)
 	return (d);
 }
 
+/**
+ * @brief	Frees the allocated memory for the array of strings in case of
+ * 			failure
+ * 
+ * @param	d The array of strings to free
+ * @param	i The number of strings allocated
+ * @return	NULL Always returns NULL
+ */
 static char	**ft_fail_alloc(char **d, int i)
 {
 	int	j;
@@ -70,6 +92,15 @@ static char	**ft_fail_alloc(char **d, int i)
 	return (NULL);
 }
 
+/**
+ * @brief	Duplicates a substring from the string 's' until the delimiter 'c'
+ * 
+ * @param	s The string to duplicate from
+ * @param	j A pointer to the current index in the string 's'
+ * @param	n The starting index for duplication
+ * @param	c The delimiter character
+ * @return	char* The duplicated substring, or NULL if an error occured
+ */
 static char	*ft_strdup_tmp3(char const *s, size_t *j, int n, char c)
 {
 	char	*dp;
@@ -85,6 +116,13 @@ static char	*ft_strdup_tmp3(char const *s, size_t *j, int n, char c)
 	return (dp);
 }
 
+/**
+ * @brief	Counts the number of substrings in a string separated by a delimiter
+ * 
+ * @param	str The string to analyze
+ * @param	c The delimiter character
+ * @return	int The number of substrings
+ */
 static int	ft_nbrstr(char const *str, char c)
 {
 	int	i;

@@ -6,17 +6,21 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:53:55 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 11:51:28 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 13:34:10 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Try to copy the 'size' - 1 character of 'src' into 'dest' by adding
-a '\0' at the end
-Returns the size of the string it has tried to create
-
-WARNING Check not to set any NULL parameter!!!*/
+/**
+ * @brief	Copies up to 'size - 1' characters from the string 'src' to 'dest',
+ * 			null-terminating the result if 'size' is not 0.
+ * 
+ * @param	dest The destination buffer
+ * @param	src The source string
+ * @param	size The size of the destination buffer
+ * @return	The total length of the string it tried to create
+ */
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;

@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llemmel <llemmel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:32:41 by benpicar          #+#    #+#             */
-/*   Updated: 2025/01/07 15:49:10 by llemmel          ###   ########.fr       */
+/*   Updated: 2025/08/28 16:16:30 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include "libft.h"
 
 static char		*ft_gnl_read(t_buffer *actual, char **d, ssize_t idx_nl);
@@ -18,6 +19,13 @@ static char		*ft_gnl_dest(char **d, char *buf, ssize_t idx, t_buffer \
 static t_buffer	*ft_actual_fd(t_buffer **start, int fd);
 static t_buffer	*ft_new_struct(int fd);
 
+/**
+ * @brief	Reads a line from a file descriptor
+ * 
+ * @param	fd The file descriptor to read from
+ * @param	end If 1, frees the buffer and returns NULL
+ * @return	char* The read line, or NULL if an error occurred or end of file
+ */
 char	*get_next_line(int fd, int end)
 {
 	static t_buffer	*buffer = NULL;
@@ -42,6 +50,15 @@ char	*get_next_line(int fd, int end)
 	return (d);
 }
 
+/**
+ * @brief	Reads from the file descriptor until a newline is found or end of
+ * 			file
+ * 
+ * @param	actual The buffer structure for the file descriptor
+ * @param	d A pointer to the string to store the read line
+ * @param	idx_nl The index of the newline character in the buffer
+ * @return	char* The read line, or NULL if an error occurred
+ */
 static char	*ft_gnl_read(t_buffer *actual, char **d, ssize_t idx_nl)
 {
 	int		readed;
@@ -55,7 +72,7 @@ static char	*ft_gnl_read(t_buffer *actual, char **d, ssize_t idx_nl)
 		return (free(buf), NULL);
 	while (readed > 0)
 	{
-		if (!ft_add_char_vector(buf, actual->vec, readed, sizeof(char)))
+		if (!ft_add_char_vector(buf, actual->vec, readed))
 			return (free(buf), NULL);
 		idx_nl = ft_memchar(actual->vec->buf, '\n', actual->vec->index);
 		if (idx_nl != -1)
@@ -71,6 +88,15 @@ static char	*ft_gnl_read(t_buffer *actual, char **d, ssize_t idx_nl)
 		return (ft_gnl_dest(d, actual->vec->buf, actual->vec->index, actual));
 }
 
+/**
+ * @brief	Extracts the line from the buffer and updates the buffer
+ * 
+ * @param	d A pointer to the string to store the read line
+ * @param	buf The buffer containing the read data
+ * @param	idx The index of the newline character or end of buffer
+ * @param	actual The buffer structure for the file descriptor
+ * @return	char* The read line, or NULL if an error occurred
+ */
 static char	*ft_gnl_dest(char **d, char *buf, ssize_t idx, t_buffer *actual)
 {
 	if ((size_t)idx != actual->vec->index)
@@ -97,6 +123,13 @@ static char	*ft_gnl_dest(char **d, char *buf, ssize_t idx, t_buffer *actual)
 	return (NULL);
 }
 
+/**
+ * @brief	Finds or creates the buffer structure for the given file descriptor
+ * 
+ * @param	start A pointer to the start of the buffer list
+ * @param	fd The file descriptor to find or create a buffer for
+ * @return	t_buffer* The found or created buffer structure
+ */
 static t_buffer	*ft_actual_fd(t_buffer **start, int fd)
 {
 	t_buffer	*tmp;
@@ -114,6 +147,12 @@ static t_buffer	*ft_actual_fd(t_buffer **start, int fd)
 	return (tmp->next);
 }
 
+/**
+ * @brief	Creates a new buffer structure for the given file descriptor
+ * 
+ * @param	fd The file descriptor to create a buffer for
+ * @return	t_buffer* The created buffer structure or NULL if an error occurred
+ */
 static t_buffer	*ft_new_struct(int fd)
 {
 	t_buffer	*new;

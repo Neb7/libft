@@ -6,12 +6,21 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:44:12 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 10:52:23 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:16:36 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include "libft.h"
 
+/**
+ * @brief	Frees all allocated memory for the buffer structures
+ * 
+ * @param	start A pointer to the start of the buffer list
+ * @param	tmp The buffer structure to free
+ * @param	tmp2 A temporary buffer structure
+ * @param	tmp3 A temporary buffer structure
+ */
 void	ft_free_all(t_buffer **start, t_buffer *tmp, t_buffer *tmp2, \
 t_buffer *tmp3)
 {

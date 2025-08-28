@@ -6,15 +6,18 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:29:00 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 11:00:11 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 13:33:35 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Returns the size of the string 's'
-
-WARNING Check not to set any NULL parameter!!!*/
+/**
+ * @brief	Calculates the length of a string
+ * 
+ * @param	s The string to measure
+ * @return	The length of the string
+ */
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;

@@ -6,14 +6,21 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:38:12 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 10:59:21 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 13:33:15 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Create a new chain with malloc and put the returns of 'f' from each character
-of 's*/
+/**
+ * @brief	Creates a new string by applying the function 'f' to each character
+ * 			of 's'
+ * 
+ * @param	s The string to iterate on
+ * @param	f The function to apply to each character
+ * @return	A new string created from the results of applying 'f' to each
+ * 			character
+ */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*d;

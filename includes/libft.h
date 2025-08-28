@@ -6,7 +6,7 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:32:43 by benpicar          #+#    #+#             */
-/*   Updated: 2025/05/13 16:38:25 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:44:04 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_vector
 	void	*buf;
 	size_t	index;
 	size_t	max_len;
+	size_t	nb_octect;
 }	t_vector;
 
 # endif
@@ -87,8 +88,7 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 /*Vector*/
 
 t_vector	*ft_new_vector(size_t nb_octect);
-t_vector	*ft_add_char_vector(void *s, t_vector *vector, size_t len, \
-size_t nb_octect);
+t_vector	*ft_add_char_vector(void *s, t_vector *vector, size_t len);
 t_vector	*ft_add_uint_vector(unsigned int *s, t_vector *vector, size_t len);
 //t_vector	*ft_float_len(t_vector *vector);
 void		ft_free_vector(t_vector **vector);

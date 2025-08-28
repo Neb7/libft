@@ -6,13 +6,17 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:20:05 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/29 10:55:59 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:44:55 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Capitalizes the character 'c' if it is a lowercase*/
+/**
+ * @brief	Converts a lowercase letter to uppercase
+ * 
+ * @param	c The character to convert
+ */
 int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')

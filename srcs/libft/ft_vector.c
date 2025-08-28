@@ -6,12 +6,17 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:17:34 by benpicar          #+#    #+#             */
-/*   Updated: 2025/03/14 16:57:24 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:51:09 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief	Create a new vector
+ * 
+ * @param	nb_octect The size of each element in the vector
+ */
 t_vector	*ft_new_vector(size_t nb_octect)
 {
 	t_vector	*new;
@@ -24,36 +29,50 @@ t_vector	*ft_new_vector(size_t nb_octect)
 		return (free(new), (t_vector *) NULL);
 	new->index = 0;
 	new->max_len = 2;
+	new->nb_octect = nb_octect;
 	return (new);
 }
 
-t_vector	*ft_add_char_vector(void *s, t_vector *vector, size_t len, \
-size_t nb_octect)
+/**
+ * @brief	Add a data to the vector, if the vector is full, it will be resized
+ * 
+ * @param	s The data to add
+ * @param	vector The vector to add the data to
+ * @param	len The number of elements to add
+ * @return	t_vector* The vector with the new data, or NULL if an error occured
+ */
+t_vector	*ft_add_char_vector(void *s, t_vector *vector, size_t len)
 {
 	void	*dbl;
 
 	if (vector->index + len <= vector->max_len)
 	{
-		ft_memcpy(vector->buf + (vector->index * nb_octect), s, \
-		len * nb_octect);
+		ft_memcpy(vector->buf + (vector->index * vector->nb_octect), s, \
+		len * vector->nb_octect);
 		vector->index = vector->index + len;
 	}
 	else
 	{
-		dbl = (void *)ft_calloc(nb_octect, ((vector->max_len * 2) + len));
+		dbl = (void *)ft_calloc(vector->nb_octect,
+				((vector->max_len * 2) + len));
 		if (!(dbl))
 			return ((t_vector *) NULL);
-		ft_memcpy(dbl, vector->buf, vector->index * nb_octect);
+		ft_memcpy(dbl, vector->buf, vector->index * vector->nb_octect);
 		vector->max_len = (vector->max_len * 2) + len;
 		free(vector->buf);
 		vector->buf = (void *)dbl;
-		ft_memcpy(vector->buf + (vector->index * nb_octect), s, \
-		len * nb_octect);
+		ft_memcpy(vector->buf + (vector->index * vector->nb_octect), s, \
+		len * vector->nb_octect);
 		vector->index = vector->index + len;
 	}
 	return (vector);
 }
 
+/**
+ * @brief	Free the memory allocated for the vector
+ * 
+ * @param	vector The vector to free
+ */
 void	ft_free_vector(t_vector **vector)
 {
 	free((*vector)->buf);
@@ -61,7 +80,12 @@ void	ft_free_vector(t_vector **vector)
 	*vector = NULL;
 }
 
-char	*ft_vtos(t_vector	*vector)
+/**
+ * @brief	Convert the vector to a string
+ * 
+ * @param	vector The vector to convert
+ */
+char	*ft_vtos(t_vector *vector)
 {
 	char	*d;
 
@@ -72,55 +96,3 @@ char	*ft_vtos(t_vector	*vector)
 	d[vector->index] = 0;
 	return (d);
 }
-
-/*t_vector	*ft_add_char_vector(char *s, t_vector *vector, size_t len)
-{
-	char	*dbl;
-
-	if (vector->index + len <= vector->max_len)
-	{
-		ft_memcpy(&((char *)vector->buf)[vector->index], s, len);
-		vector->index = vector->index + len;
-	}
-	else
-	{
-		dbl = (char *)malloc((vector->max_len * 2) + len);
-		if (!(dbl))
-			return ((t_vector *) NULL);
-		ft_memcpy(dbl, (char *)vector->buf, vector->index);
-		vector->max_len = (vector->max_len * 2) + len;
-		free(vector->buf);
-		vector->buf = (void *)dbl;
-		ft_memcpy(&((char *)vector->buf)[vector->index], s, len);
-		vector->index = vector->index + len;
-	}
-	return (vector);
-}
-t_vector	*ft_add_uint_vector(unsigned int *s, t_vector *vector, size_t len)
-{
-	unsigned int	*dbl;
-
-	if (vector->index + len <= vector->max_len)
-	{
-		ft_memcpy(&((unsigned int *)vector->buf)[vector->index], s, \
-		len * sizeof(unsigned int));
-		vector->index = vector->index + len;
-	}
-	else
-	{
-		dbl = (unsigned int *)malloc(sizeof(unsigned int) * \
-		((vector->max_len * 2) + len));
-		if (!(dbl))
-			return ((t_vector *) NULL);
-		ft_memcpy(dbl, (unsigned int *)vector->buf, \
-		vector->index * sizeof(unsigned int));
-		vector->max_len = (vector->max_len * 2) + len;
-		free(vector->buf);
-		vector->buf = (void *)dbl;
-		ft_memcpy(&((unsigned int *)vector->buf)[vector->index], s, \
-		len * sizeof(unsigned int));
-		vector->index = vector->index + len;
-	}
-	return (vector);
-}
-*/

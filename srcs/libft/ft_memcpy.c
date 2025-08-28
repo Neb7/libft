@@ -6,12 +6,20 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:57:38 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 14:27:56 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:54:00 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief	Copies 'n' bytes from memory area 'src' to memory area 'dest'.
+ * 
+ * @param	dest The destination memory area
+ * @param	src The source memory area
+ * @param	n The number of bytes to copy
+ * @return	The destination memory area
+ */
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;

@@ -6,12 +6,18 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:11:31 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/26 14:54:40 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:50:08 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief	Writes an integer to a file descriptor
+ * 
+ * @param	n The integer to write
+ * @param	fd The file descriptor to write to
+ */
 void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	nb;

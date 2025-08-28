@@ -6,12 +6,18 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 19:39:31 by benpicar          #+#    #+#             */
-/*   Updated: 2025/05/13 16:37:51 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:09:48 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief	Converts a string to an integer
+ * 
+ * @param	nptr The string to convert
+ * @return	int The converted integer
+ */
 int	ft_atoi(const char *nptr)
 {
 	int	i;
@@ -39,6 +45,13 @@ int	ft_atoi(const char *nptr)
 	return (res * s);
 }
 
+/**
+ * @brief	Converts a string to an integer and updates the index
+ * 
+ * @param	nptr The string to convert
+ * @param	idx A pointer to the index to update
+ * @return	int The converted integer
+ */
 int	ft_atoi_i(const char *nptr, int *idx)
 {
 	int	i;

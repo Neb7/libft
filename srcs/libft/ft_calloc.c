@@ -6,13 +6,21 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:20:10 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/13 13:18:53 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:07:48 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdint.h>
 
+/**
+ * @brief	Allocates memory for an array of 'nmemb' elements of 'size' bytes
+ * 			each and initializes all bytes to zero.
+ * 
+ * @param	nmemb The number of elements to allocate
+ * @param	size The size of each element
+ * @return	void* A pointer to the allocated memory, or NULL if an error occured
+ */
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*r;

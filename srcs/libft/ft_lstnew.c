@@ -6,12 +6,19 @@
 /*   By: benpicar <benpicar@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:18:08 by benpicar          #+#    #+#             */
-/*   Updated: 2024/11/15 16:02:00 by benpicar         ###   ########.fr       */
+/*   Updated: 2025/08/28 15:58:40 by benpicar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief	Creates a new list element
+ * 
+ * @param	content The content of the new element
+ * @return	t_list* A pointer to the new list element, or NULL if allocation
+ * 			fails
+ */
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
